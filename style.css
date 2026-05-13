@@ -303,6 +303,70 @@ select option {
     filter: drop-shadow(0 0 10px var(--accent-blue));
 }
 
+/* Reviews Section Styling */
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.review-card {
+    padding: 40px;
+    border-radius: 30px;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.review-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.stars {
+    color: #ffcc00;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.testimonial {
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: var(--text-silver) !important;
+}
+
+.reviewer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.reviewer-info strong {
+    display: block;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.reviewer-info span {
+    color: var(--text-gray);
+    font-size: 0.85rem;
+}
+
+/* Social Button Enhancements */
+.social-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 25px !important;
+    font-weight: 500 !important;
+}
+
+.social-btn i {
+    font-size: 1.2rem;
+}
+
 /* Cinematic Background Global */
 /* Cinematic Background Global */
 #cinematic-bg {

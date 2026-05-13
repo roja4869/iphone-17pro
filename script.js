@@ -174,6 +174,25 @@ const initScrollAnimations = () => {
   });
 };
 
+// Reviews Animation
+const initReviewsAnimation = () => {
+  const cards = document.querySelectorAll(".review-card");
+  if (cards.length === 0) return;
+
+  gsap.from(cards, {
+    y: 50,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.2,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: "#reviews",
+      start: "top 80%",
+      toggleActions: "play none none reverse"
+    }
+  });
+};
+
 // Cursor Glow
 const initCursorGlow = () => {
   const glow = document.getElementById("cursor-glow");
@@ -292,6 +311,7 @@ document.addEventListener("DOMContentLoaded", () => {
   safeInit(initCursorGlow);
   safeInit(initHeroCanvas);
   safeInit(initScrollAnimations);
+  safeInit(initReviewsAnimation);
   safeInit(initPageTransitions);
   safeInit(initConfigurator);
 
