@@ -298,7 +298,7 @@ p {
     height: 100vh;
     z-index: -2;
     background-color: #020202;
-    background-image: url('assets/clean_titanium_texture.png');
+    background-image: url('assets/wow_cinematic_bg.png');
     background-size: cover;
     background-position: center;
 }
