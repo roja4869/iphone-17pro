@@ -56,6 +56,11 @@ const initHeroCanvas = () => {
         loadedCount++;
         if (loadedCount === 1) render(); // Show first frame immediately
       };
+      // For cached images
+      if (img.complete) {
+        loadedCount++;
+        if (loadedCount === 1) render();
+      }
       images.push(img);
     }
   };
