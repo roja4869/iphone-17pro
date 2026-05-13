@@ -183,8 +183,27 @@
     <style>
         .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
         .purchase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-        .gallery-main { width: 100%; border-radius: 40px; padding: 40px; margin-bottom: 20px; position: sticky; top: 120px; }
-        .gallery-main img { width: 100%; filter: url(#clean-image); }
+        .gallery-main { 
+            width: 100%; 
+            aspect-ratio: 4/3; 
+            border-radius: 40px; 
+            margin-bottom: 20px; 
+            position: sticky; 
+            top: 120px; 
+            overflow: hidden; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            background: radial-gradient(circle at center, rgba(255,165,0,0.1) 0%, transparent 80%);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .gallery-main img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            transform: scale(1.2); 
+            transition: 0.5s; 
+        }
         .gallery-thumbs { display: flex; gap: 15px; }
         .thumb { width: 80px; height: 80px; border-radius: 15px; padding: 10px; cursor: pointer; transition: 0.3s; }
         .thumb.active { border-color: #fff; }
