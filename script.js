@@ -224,6 +224,19 @@ const initPageTransitions = () => {
 // Configurator Toggle Logic (for Purchase Page)
 const initConfigurator = () => {
   const options = document.querySelectorAll(".option-card, .payment-card");
+  const paymentDetailsContainer = document.getElementById("payment-details-container");
+  
+  // Show default payment method details on load
+  const activePayment = document.querySelector(".payment-card.active");
+  if (activePayment && paymentDetailsContainer) {
+    const method = activePayment.getAttribute("data-method");
+    const section = document.getElementById(`method-${method}`);
+    if (section) {
+      paymentDetailsContainer.style.display = "block";
+      section.style.display = "block";
+    }
+  }
+
   options.forEach(option => {
     option.addEventListener("click", () => {
       // Find the grid container to only clear siblings
@@ -231,17 +244,41 @@ const initConfigurator = () => {
       if (grid) {
         grid.querySelectorAll(".active").forEach(el => el.classList.remove("active"));
         option.classList.add("active");
+        
+        // Handle Payment Method Switching
+        if (grid.classList.contains("payment-grid")) {
+          const method = option.getAttribute("data-method");
+          switchPaymentMethod(method);
+        }
       }
     });
   });
 
-  // Place Order Button
-  const placeOrderBtn = document.querySelector(".order-summary .btn-primary");
-  if (placeOrderBtn) {
-    placeOrderBtn.addEventListener("click", () => {
-      alert("Success! Your iPhone 17 Pro order has been received. You will receive a confirmation email shortly.");
+  const switchPaymentMethod = (method) => {
+    const sections = document.querySelectorAll(".payment-method-section");
+    const targetSection = document.getElementById(`method-${method}`);
+    
+    if (!paymentDetailsContainer || !targetSection) return;
+
+    // Fade out current sections
+    gsap.to(sections, {
+      opacity: 0,
+      y: 10,
+      duration: 0.3,
+      onComplete: () => {
+        sections.forEach(s => s.style.display = "none");
+        
+        // Prepare target section
+        targetSection.style.display = "block";
+        gsap.fromTo(targetSection, 
+          { opacity: 0, y: 10 },
+          { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }
+        );
+      }
     });
-  }
+  };
+
+  // Place Order logic moved to DOMContentLoaded for consolidation
 };
 
 // Initialize All with Safety Wrappers
@@ -264,6 +301,35 @@ document.addEventListener("DOMContentLoaded", () => {
     orderBtn.addEventListener("click", (e) => {
       e.preventDefault();
       
+      // Basic Validation
+      const activeMethod = document.querySelector(".payment-card.active").getAttribute("data-method");
+      const activeSection = document.getElementById(`method-${activeMethod}`);
+      if (activeSection) {
+        const inputs = activeSection.querySelectorAll("input, select");
+        let isValid = true;
+        
+        inputs.forEach(input => {
+          if (input.hasAttribute("required") && !input.value) isValid = false;
+        });
+
+        if (!isValid) {
+          alert("Please fill in all payment details.");
+          return;
+        }
+      }
+
+      // Check delivery details
+      const deliveryInputs = document.querySelectorAll(".customer-form input[required], .customer-form textarea[required]");
+      let deliveryValid = true;
+      deliveryInputs.forEach(input => {
+        if (!input.value) deliveryValid = false;
+      });
+
+      if (!deliveryValid) {
+        alert("Please fill in all delivery details.");
+        return;
+      }
+
       // Cinematic Success Animation
       gsap.to(orderBtn, {
         scale: 0.95,

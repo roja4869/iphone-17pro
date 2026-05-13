@@ -134,29 +134,98 @@
                     <div class="config-section">
                         <span class="label">Payment Method</span>
                         <div class="payment-grid">
-                            <div class="payment-card glass active">
+                            <div class="payment-card glass active" data-method="card">
                                 <span class="icon">💳</span>
                                 <span>Credit Card</span>
                             </div>
-                            <div class="payment-card glass">
+                            <div class="payment-card glass" data-method="upi">
                                 <span class="icon">📲</span>
                                 <span>UPI / QR</span>
                             </div>
-                            <div class="payment-card glass">
+                            <div class="payment-card glass" data-method="apple">
                                 <span class="icon">🍎</span>
                                 <span>Apple Pay</span>
                             </div>
-                            <div class="payment-card glass">
+                            <div class="payment-card glass" data-method="paypal">
                                 <span class="icon">🅿️</span>
                                 <span>PayPal</span>
                             </div>
-                            <div class="payment-card glass">
+                            <div class="payment-card glass" data-method="netbanking">
                                 <span class="icon">🏦</span>
                                 <span>Net Banking</span>
                             </div>
-                            <div class="payment-card glass">
+                            <div class="payment-card glass" data-method="cod">
                                 <span class="icon">💵</span>
                                 <span>Cash on Delivery</span>
+                            </div>
+                        </div>
+
+                        <!-- Dynamic Payment Details -->
+                        <div id="payment-details-container" class="glass" style="margin-top: 20px; padding: 25px; border-radius: 20px; display: none; overflow: hidden;">
+                            <div id="method-card" class="payment-method-section">
+                                <h3 style="margin-bottom: 20px; font-size: 1.1rem;">Credit / Debit Card</h3>
+                                <div class="form-grid">
+                                    <div class="form-group full">
+                                        <input type="text" placeholder="Card Number" maxlength="19" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" placeholder="MM/YY" maxlength="5" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" placeholder="CVV" maxlength="3" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="method-upi" class="payment-method-section" style="display: none;">
+                                <h3 style="margin-bottom: 20px; font-size: 1.1rem;">UPI Payment</h3>
+                                <div class="form-group full" style="margin-bottom: 15px;">
+                                    <input type="text" placeholder="Enter UPI ID (e.g., user@bank)" required>
+                                </div>
+                                <div style="text-align: center; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 15px;">
+                                    <p style="font-size: 0.8rem; margin-bottom: 10px;">Or scan QR code</p>
+                                    <div style="width: 120px; height: 120px; background: #fff; margin: 0 auto; padding: 5px; border-radius: 10px;">
+                                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=iPhone17ProPurchase" style="width: 100%; height: 100%;" alt="QR Code">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="method-apple" class="payment-method-section" style="display: none;">
+                                <div style="text-align: center; padding: 20px;">
+                                    <button class="glass" style="width: 100%; padding: 15px; border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer;">
+                                        <span style="font-size: 1.5rem;">🍎</span>
+                                        <span style="font-weight: 600;">Pay with Apple Pay</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div id="method-paypal" class="payment-method-section" style="display: none;">
+                                <h3 style="margin-bottom: 20px; font-size: 1.1rem;">PayPal</h3>
+                                <div class="form-group full">
+                                    <input type="email" placeholder="PayPal Email Address" required>
+                                </div>
+                                <p style="font-size: 0.8rem; margin-top: 10px;">You will be redirected to PayPal to complete the transaction.</p>
+                            </div>
+
+                            <div id="method-netbanking" class="payment-method-section" style="display: none;">
+                                <h3 style="margin-bottom: 20px; font-size: 1.1rem;">Net Banking</h3>
+                                <div class="form-group full">
+                                    <select style="width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; padding: 12px; color: #fff;" required>
+                                        <option value="" disabled selected>Select Your Bank</option>
+                                        <option>HDFC Bank</option>
+                                        <option>ICICI Bank</option>
+                                        <option>State Bank of India</option>
+                                        <option>Axis Bank</option>
+                                        <option>Kotak Mahindra Bank</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div id="method-cod" class="payment-method-section" style="display: none;">
+                                <div style="text-align: center; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 15px;">
+                                    <p style="color: #00ff88; font-weight: 600;">Cash on Delivery Available</p>
+                                    <p style="font-size: 0.85rem; margin-top: 5px;">Pay when you receive your iPhone 17 Pro.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
