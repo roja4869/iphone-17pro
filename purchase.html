@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase | iPhone 17 Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+</head>
+<body class="purchase-page">
+    <div id="cinematic-bg">
+        <div class="bg-glow glow-1"></div>
+        <div class="bg-glow glow-2"></div>
+        <div class="bg-glow glow-3"></div>
+        <div class="light-streak"></div>
+    </div>
+
+    <nav id="navbar" class="glass">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html" style="color: #fff; text-decoration: none; font-weight: 700; font-size: 1.2rem;">iPhone 17 Pro</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#camera">Features</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <span style="font-weight: 600; font-size: 0.9rem;">From $999</span>
+            </div>
+        </div>
+    </nav>
+
+    <main style="padding-top: 120px; padding-bottom: 100px;">
+        <div class="container">
+            <div class="purchase-grid">
+                <!-- Product Preview -->
+                <div class="product-gallery">
+                    <div class="gallery-main glass">
+                        <img src="assets/iphone_frames/ezgif-frame-001.jpg" alt="iPhone 17 Pro" id="main-preview">
+                    </div>
+                    <div class="gallery-thumbs">
+                        <img src="assets/iphone_frames/ezgif-frame-001.jpg" class="thumb active glass" onclick="changePreview(this.src, this)">
+                        <img src="assets/iphone_frames/ezgif-frame-060.jpg" class="thumb glass" onclick="changePreview(this.src, this)">
+                        <img src="assets/iphone_frames/ezgif-frame-120.jpg" class="thumb glass" onclick="changePreview(this.src, this)">
+                    </div>
+                </div>
+
+                <!-- Configurator -->
+                <div class="configurator">
+                    <div class="config-header">
+                        <h1 style="font-size: 3rem; margin-bottom: 10px;">Buy iPhone 17 Pro</h1>
+                        <p style="color: var(--text-gray); margin-bottom: 30px;">Choose your style and capacity.</p>
+                    </div>
+
+                    <div class="config-section">
+                        <span class="label">Color</span>
+                        <div class="option-grid">
+                            <div class="option-card glass active">
+                                <div class="color-dot" style="background: #a5a5a5;"></div>
+                                <span>Natural Titanium</span>
+                            </div>
+                            <div class="option-card glass">
+                                <div class="color-dot" style="background: #2b3a4a;"></div>
+                                <span>Blue Titanium</span>
+                            </div>
+                            <div class="option-card glass">
+                                <div class="color-dot" style="background: #f5f5f7;"></div>
+                                <span>White Titanium</span>
+                            </div>
+                            <div class="option-card glass">
+                                <div class="color-dot" style="background: #1c1c1c;"></div>
+                                <span>Black Titanium</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="config-section">
+                        <span class="label">Storage</span>
+                        <div class="option-grid">
+                            <div class="option-card glass">
+                                <span>128GB</span>
+                                <p>$999</p>
+                            </div>
+                            <div class="option-card glass active">
+                                <span>256GB</span>
+                                <p>$1099</p>
+                            </div>
+                            <div class="option-card glass">
+                                <span>512GB</span>
+                                <p>$1299</p>
+                            </div>
+                            <div class="option-card glass">
+                                <span>1TB</span>
+                                <p>$1499</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Customer Form -->
+                    <div class="config-section">
+                        <span class="label">Delivery Details</span>
+                        <div class="customer-form glass">
+                            <div class="form-grid">
+                                <div class="form-group full">
+                                    <input type="text" placeholder="Full Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" placeholder="Email Address" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" placeholder="Phone Number" required>
+                                </div>
+                                <div class="form-group full">
+                                    <textarea placeholder="Delivery Address" rows="3" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" placeholder="PIN Code" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" value="1" min="1" max="10">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Methods -->
+                    <div class="config-section">
+                        <span class="label">Payment Method</span>
+                        <div class="payment-grid">
+                            <div class="payment-card glass active">
+                                <span class="icon">💳</span>
+                                <span>Credit Card</span>
+                            </div>
+                            <div class="payment-card glass">
+                                <span class="icon">📲</span>
+                                <span>UPI / QR</span>
+                            </div>
+                            <div class="payment-card glass">
+                                <span class="icon">🍎</span>
+                                <span>Apple Pay</span>
+                            </div>
+                            <div class="payment-card glass">
+                                <span class="icon">🅿️</span>
+                                <span>PayPal</span>
+                            </div>
+                            <div class="payment-card glass">
+                                <span class="icon">🏦</span>
+                                <span>Net Banking</span>
+                            </div>
+                            <div class="payment-card glass">
+                                <span class="icon">💵</span>
+                                <span>Cash on Delivery</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-summary glass">
+                        <div class="summary-line">
+                            <span>Subtotal</span>
+                            <span>$1099.00</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>Shipping</span>
+                            <span style="color: #00ff88;">FREE</span>
+                        </div>
+                        <div class="summary-line total">
+                            <span>Total</span>
+                            <span>$1099.00</span>
+                        </div>
+                        <button id="place-order-btn" class="btn-primary" style="width: 100%; margin-top: 20px; font-size: 1.1rem; padding: 18px;">Place Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <style>
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+        .purchase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+        .gallery-main { width: 100%; border-radius: 40px; padding: 40px; margin-bottom: 20px; position: sticky; top: 120px; }
+        .gallery-main img { width: 100%; filter: url(#clean-image); }
+        .gallery-thumbs { display: flex; gap: 15px; }
+        .thumb { width: 80px; height: 80px; border-radius: 15px; padding: 10px; cursor: pointer; transition: 0.3s; }
+        .thumb.active { border-color: #fff; }
+        
+        .config-section { margin-bottom: 40px; }
+        .option-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .option-card { padding: 20px; border-radius: 20px; cursor: pointer; transition: 0.3s; border: 1px solid var(--glass-border); display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .option-card.active { border-color: #fff; background: rgba(255,255,255,0.1); }
+        .color-dot { width: 25px; height: 25px; border-radius: 50%; margin-bottom: 10px; border: 2px solid rgba(255,255,255,0.2); }
+        
+        .customer-form { padding: 30px; border-radius: 30px; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .form-group.full { grid-column: span 2; }
+        .form-group input, .form-group textarea { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; padding: 12px; color: #fff; font-size: 0.95rem; }
+
+        .payment-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+        .payment-card { padding: 15px; border-radius: 15px; cursor: pointer; text-align: center; font-size: 0.8rem; border: 1px solid var(--glass-border); }
+        .payment-card .icon { display: block; font-size: 1.5rem; margin-bottom: 5px; }
+        .payment-card.active { border-color: var(--accent-blue); background: rgba(0, 113, 227, 0.1); }
+
+        .order-summary { padding: 30px; border-radius: 30px; margin-top: 20px; }
+        .summary-line { display: flex; justify-content: space-between; margin-bottom: 10px; color: var(--text-gray); }
+        .summary-line.total { border-top: 1px solid var(--glass-border); padding-top: 15px; margin-top: 15px; color: #fff; font-size: 1.3rem; font-weight: 700; }
+
+        @media (max-width: 992px) {
+            .purchase-grid { grid-template-columns: 1fr; }
+            .gallery-main { position: static; }
+        }
+    </style>
+
+    <svg style="position: absolute; width: 0; height: 0;" aria-hidden="true">
+        <filter id="clean-image">
+            <feColorMatrix type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 -1.5 -1.5 -1.5 3 1.5"/>
+            <feComponentTransfer><feFuncA type="linear" slope="3" intercept="-1"/></feComponentTransfer>
+        </filter>
+    </svg>
+
+    <script>
+        function changePreview(src, element) {
+            document.getElementById('main-preview').src = src;
+            document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+            element.classList.add('active');
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

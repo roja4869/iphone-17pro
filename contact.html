@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | iPhone 17 Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+</head>
+<body class="contact-page">
+    <div id="cinematic-bg">
+        <div class="bg-glow glow-1"></div>
+        <div class="bg-glow glow-2"></div>
+        <div class="bg-glow glow-3"></div>
+        <div class="light-streak"></div>
+    </div>
+
+    <nav id="navbar" class="glass">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html" style="color: #fff; text-decoration: none; font-weight: 700; font-size: 1.2rem;">iPhone 17 Pro</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#camera">Features</a>
+                <a href="contact.html" style="color: #fff;">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <a href="purchase.html" class="btn-primary" style="text-decoration: none; font-size: 0.85rem; padding: 8px 20px;">Buy Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <main style="padding-top: 150px; padding-bottom: 100px;">
+        <div class="container">
+            <div class="contact-header" style="text-align: center; margin-bottom: 80px;">
+                <h1 style="font-size: 4rem; margin-bottom: 10px;">Get in Touch</h1>
+                <p style="font-size: 1.2rem; color: var(--text-gray);">We're here to help you experience the future.</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="info-card glass">
+                        <h3>Customer Support</h3>
+                        <p>Our specialists are available 24/7 to assist you.</p>
+                        <div class="contact-detail">
+                            <span class="label">Phone</span>
+                            <p>+1 (800) MY-IPHONE</p>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="label">Email</span>
+                            <p>support@apple-style.com</p>
+                        </div>
+                    </div>
+                    <div class="info-card glass">
+                        <h3>Social Media</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-btn glass">Twitter</a>
+                            <a href="#" class="social-btn glass">Instagram</a>
+                            <a href="#" class="social-btn glass">YouTube</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-container glass">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" placeholder="name@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <select>
+                                <option>General Inquiry</option>
+                                <option>Technical Support</option>
+                                <option>Order Status</option>
+                                <option>Business Inquiries</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea placeholder="How can we help?" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width: 100%; margin-top: 20px;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-content" style="text-align: center;">
+                <div class="footer-brand">iPhone 17 Pro</div>
+                <div class="footer-copy" style="margin-top: 20px;">&copy; 2026 Apple Style. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; }
+        .info-card { padding: 40px; border-radius: 30px; margin-bottom: 30px; }
+        .info-card h3 { font-size: 1.8rem; margin-bottom: 15px; }
+        .contact-detail { margin-top: 25px; }
+        .contact-form-container { padding: 50px; border-radius: 40px; }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; font-size: 0.9rem; color: var(--text-gray); margin-bottom: 8px; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; padding: 15px; color: #fff; font-size: 1rem; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #fff; outline: none; background: rgba(255,255,255,0.08); }
+        .social-links { display: flex; gap: 15px; margin-top: 20px; }
+        .social-btn { padding: 10px 20px; border-radius: 15px; text-decoration: none; color: #fff; font-size: 0.9rem; transition: background 0.3s ease; }
+        .social-btn:hover { background: rgba(255,255,255,0.1); }
+
+        @media (max-width: 768px) {
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+
+    <script src="script.js"></script>
+</body>
+</html>
