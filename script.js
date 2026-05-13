@@ -29,7 +29,7 @@ const hideLoader = () => {
   });
 };
 
-// Canvas Hero Animation (Simulated Video)
+// Cinematic Video Engine (Canvas + GSAP)
 const initHeroCanvas = () => {
   const canvas = document.getElementById("hero-canvas");
   if (!canvas) return;
@@ -37,7 +37,7 @@ const initHeroCanvas = () => {
   const context = canvas.getContext("2d");
   const frameCount = 240;
   const images = [];
-  const sequence = { frame: 0 };
+  const sequence = { frame: 0, zoom: 1 };
 
   // Set initial dimensions
   const setCanvasSize = () => {
@@ -46,7 +46,7 @@ const initHeroCanvas = () => {
   };
   setCanvasSize();
 
-  // Load images with promise
+  // Load images
   let loadedCount = 0;
   const loadImages = () => {
     for (let i = 1; i <= frameCount; i++) {
@@ -55,43 +55,55 @@ const initHeroCanvas = () => {
       img.src = `assets/iphone_frames/ezgif-frame-${frameNum}.jpg`;
       img.onload = () => {
         loadedCount++;
-        if (i === 1) render(); // Always render first frame immediately on load
-        if (loadedCount === frameCount) render();
-      };
-      // Fallback for cached images
-      if (img.complete) {
         if (i === 1) render();
-      }
+        if (loadedCount === frameCount) startCinematicLoop();
+      };
       images.push(img);
     }
   };
   loadImages();
 
   const render = () => {
-    const img = images[sequence.frame];
+    const img = images[Math.floor(sequence.frame)];
     if (img && img.complete) {
       context.clearRect(0, 0, canvas.width, canvas.height);
-      const scale = Math.max(canvas.width / img.width, canvas.height / img.height);
-      const x = (canvas.width / 2) - (img.width / 2) * scale;
-      const y = (canvas.height / 2) - (img.height / 2) * scale;
-      context.drawImage(img, x, y, img.width * scale, img.height * scale);
+      const baseScale = Math.max(canvas.width / img.width, canvas.height / img.height);
+      const finalScale = baseScale * sequence.zoom;
+      const x = (canvas.width / 2) - (img.width / 2) * finalScale;
+      const y = (canvas.height / 2) - (img.height / 2) * finalScale;
+      context.drawImage(img, x, y, img.width * finalScale, img.height * finalScale);
     }
   };
 
-  // Sync with Scroll using better scrub and trigger
+  // Cinematic Autoplay Loop (The "Video" part)
+  let loopTween;
+  const startCinematicLoop = () => {
+    loopTween = gsap.timeline({ repeat: -1, yoyo: true });
+    
+    // Scene 1: Intro Fade/Zoom
+    loopTween.to(sequence, { zoom: 1.1, duration: 4, ease: "power1.inOut", onUpdate: render });
+    
+    // Scene 2: Slow Rotation
+    loopTween.to(sequence, { frame: 60, duration: 6, ease: "none", onUpdate: render }, "-=4");
+  };
+
+  // Scroll Sync (Transitions from Video to Scroll)
   gsap.to(sequence, {
     frame: frameCount - 1,
+    zoom: 1.5, // Zoom in as we scroll
     ease: "none",
     scrollTrigger: {
-      trigger: "main", // Use main container for total scroll length
+      trigger: "main",
       start: "top top",
       end: "bottom bottom",
-      scrub: 1, // Smoother scroll mapping
-      onUpdate: render
+      scrub: 1,
+      onUpdate: () => {
+        if (loopTween) loopTween.pause();
+        render();
+      }
     }
   });
 
-  // Handle Resize
   window.addEventListener("resize", () => {
     setCanvasSize();
     render();
