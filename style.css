@@ -297,8 +297,8 @@ p {
     width: 100%;
     height: 100vh;
     z-index: -2;
-    background-color: #020202;
-    background-image: url('assets/wow_cinematic_bg.png');
+    background-color: #000;
+    background-image: url('assets/user_custom_bg.png');
     background-size: cover;
     background-position: center;
 }
