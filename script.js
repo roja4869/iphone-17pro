@@ -278,18 +278,6 @@ const initConfigurator = () => {
     });
   };
 
-  // Apple Pay Trigger Logic
-  const applePayBtn = document.getElementById("apple-pay-trigger");
-  if (applePayBtn) {
-    applePayBtn.addEventListener("click", () => {
-      const orderBtn = document.getElementById("place-order-btn");
-      if (orderBtn) orderBtn.click();
-    });
-    
-    applePayBtn.addEventListener("mouseenter", () => gsap.to(applePayBtn, { background: "rgba(255,255,255,0.1)", duration: 0.3 }));
-    applePayBtn.addEventListener("mouseleave", () => gsap.to(applePayBtn, { background: "#000", duration: 0.3 }));
-  }
-
   // Place Order logic moved to DOMContentLoaded for consolidation
 };
 
