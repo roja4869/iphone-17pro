@@ -290,6 +290,7 @@ p {
 }
 
 /* Cinematic Background Global */
+/* Cinematic Background Global */
 #cinematic-bg {
     position: fixed;
     top: 0;
@@ -298,9 +299,29 @@ p {
     height: 100vh;
     z-index: -2;
     background-color: #000;
-    background-image: url('assets/user_custom_bg.png');
+    background-image: url('assets/user_custom_bg.png'); /* Default for other pages */
     background-size: cover;
     background-position: center;
+}
+
+/* Background for Utility Pages (Contact/Purchase) */
+.contact-page #cinematic-bg, .purchase-page #cinematic-bg {
+    background-image: url('assets/minimalist_studio_bg.png');
+}
+
+/* Contrast Fixes for Utility Pages */
+.contact-page .glass, .purchase-page .glass {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-page h1, .purchase-page h1, 
+.contact-page h3, .purchase-page h3,
+.contact-page label, .purchase-page label {
+    color: #fff !important;
+    font-weight: 700 !important;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
 #video-bg-container {
