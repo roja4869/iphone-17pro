@@ -44,6 +44,7 @@
                     <div class="gallery-main glass">
                         <img src="assets/iphone_frames/ezgif-frame-001.jpg" alt="iPhone 17 Pro" id="main-preview">
                     </div>
+                    <div class="reflection-layer"></div>
                     <div class="gallery-thumbs">
                         <img src="assets/iphone_frames/ezgif-frame-001.jpg" class="thumb active glass" onclick="changePreview(this.src, this)">
                         <img src="assets/iphone_frames/ezgif-frame-060.jpg" class="thumb glass" onclick="changePreview(this.src, this)">
@@ -183,54 +184,88 @@
     <style>
         .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
         .purchase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-        .gallery-main { 
-            width: 100%; 
-            aspect-ratio: 4/3; 
-            border-radius: 40px; 
-            margin-bottom: 20px; 
+        
+        /* Modern 3D Frame Showcase */
+        .product-gallery { 
             position: sticky; 
             top: 120px; 
+            perspective: 1500px; 
+        }
+        
+        .gallery-main { 
+            width: 100%; 
+            aspect-ratio: 4/5; 
+            border-radius: 50px; 
             overflow: hidden; 
+            position: relative;
             display: flex; 
             align-items: center; 
             justify-content: center;
-            background: radial-gradient(circle at center, rgba(255,165,0,0.1) 0%, transparent 80%);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: #000;
+            border: 2px solid rgba(255,255,255,0.15);
+            box-shadow: 
+                0 50px 100px rgba(0,0,0,0.8),
+                0 0 40px rgba(255,165,0,0.1);
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out;
         }
+
+        .gallery-main::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.05) 50%, transparent 55%);
+            z-index: 5;
+            pointer-events: none;
+            transform: rotate(25deg);
+        }
+
         .gallery-main img { 
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
-            transform: scale(1.2); 
-            transition: 0.5s; 
+            transform: scale(1.2);
         }
-        .gallery-thumbs { display: flex; gap: 15px; }
-        .thumb { width: 80px; height: 80px; border-radius: 15px; padding: 10px; cursor: pointer; transition: 0.3s; }
-        .thumb.active { border-color: #fff; }
+
+        .reflection-layer {
+            width: 100%;
+            height: 120px;
+            margin-top: -30px;
+            background: linear-gradient(to bottom, rgba(255,165,0,0.15) 0%, transparent 100%);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,0.3), transparent);
+            filter: blur(10px);
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .gallery-thumbs { display: flex; gap: 15px; margin-top: 30px; justify-content: center; }
+        .thumb { width: 70px; height: 70px; border-radius: 12px; cursor: pointer; transition: 0.3s; border: 2px solid transparent; object-fit: cover; opacity: 0.7; }
+        .thumb.active { border-color: #fff; transform: scale(1.1); opacity: 1; }
         
         .config-section { margin-bottom: 40px; }
         .option-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .option-card { padding: 20px; border-radius: 20px; cursor: pointer; transition: 0.3s; border: 1px solid var(--glass-border); display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .option-card { padding: 25px; border-radius: 20px; cursor: pointer; transition: 0.3s; border: 1px solid var(--glass-border); text-align: center; background: rgba(0,0,0,0.4); }
         .option-card.active { border-color: #fff; background: rgba(255,255,255,0.1); }
-        .color-dot { width: 25px; height: 25px; border-radius: 50%; margin-bottom: 10px; border: 2px solid rgba(255,255,255,0.2); }
+        .color-dot { width: 25px; height: 25px; border-radius: 50%; margin: 0 auto 10px; border: 2px solid rgba(255,255,255,0.2); }
         
-        .customer-form { padding: 30px; border-radius: 30px; }
+        .customer-form { padding: 30px; border-radius: 30px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.05); }
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .form-group.full { grid-column: span 2; }
+        .form-group label { display: block; font-size: 0.85rem; color: var(--text-gray); margin-bottom: 8px; font-weight: 600; }
         .form-group input, .form-group textarea { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; padding: 12px; color: #fff; font-size: 0.95rem; }
 
         .payment-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-        .payment-card { padding: 15px; border-radius: 15px; cursor: pointer; text-align: center; font-size: 0.8rem; border: 1px solid var(--glass-border); }
-        .payment-card .icon { display: block; font-size: 1.5rem; margin-bottom: 5px; }
-        .payment-card.active { border-color: var(--accent-blue); background: rgba(0, 113, 227, 0.1); }
+        .payment-card { padding: 15px; border-radius: 15px; cursor: pointer; text-align: center; font-size: 0.8rem; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.4); }
+        .payment-card.active { border-color: #fff; background: rgba(255, 255, 255, 0.1); }
 
-        .order-summary { padding: 30px; border-radius: 30px; margin-top: 20px; }
+        .order-summary { padding: 30px; border-radius: 30px; margin-top: 20px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.05); }
         .summary-line { display: flex; justify-content: space-between; margin-bottom: 10px; color: var(--text-gray); }
         .summary-line.total { border-top: 1px solid var(--glass-border); padding-top: 15px; margin-top: 15px; color: #fff; font-size: 1.3rem; font-weight: 700; }
 
         @media (max-width: 992px) {
             .purchase-grid { grid-template-columns: 1fr; }
-            .gallery-main { position: static; }
+            .product-gallery { position: relative; top: 0; }
+            .gallery-main { aspect-ratio: 4/3; }
         }
     </style>
 
@@ -246,6 +281,38 @@
             document.getElementById('main-preview').src = src;
             document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
             element.classList.add('active');
+        }
+
+        // Modern 3D Tilt Effect
+        const gallery = document.querySelector('.gallery-main');
+        if (gallery) {
+            window.addEventListener('mousemove', (e) => {
+                const rect = gallery.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                gsap.to(gallery, {
+                    duration: 0.5,
+                    rotateX: rotateX,
+                    rotateY: rotateY,
+                    ease: 'power2.out'
+                });
+            });
+
+            gallery.addEventListener('mouseleave', () => {
+                gsap.to(gallery, {
+                    duration: 0.8,
+                    rotateX: 0,
+                    rotateY: 0,
+                    ease: 'elastic.out(1, 0.5)'
+                });
+            });
         }
     </script>
     <script src="script.js"></script>
