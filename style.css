@@ -306,24 +306,46 @@ p {
 
 /* Background for Utility Pages (Contact/Purchase) */
 .contact-page #cinematic-bg, .purchase-page #cinematic-bg {
-    background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('assets/chrome_apple_bg.png');
+    background-image: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)), url('assets/white_apple_bg.png');
     background-size: cover;
     background-position: center;
+    background-color: #f5f5f7;
 }
 
-/* Contrast Fixes for Utility Pages */
+/* Light Theme Contrast Fixes for Utility Pages */
 .contact-page .glass, .purchase-page .glass {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.7) !important;
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
 .contact-page h1, .purchase-page h1, 
 .contact-page h3, .purchase-page h3,
-.contact-page label, .purchase-page label {
-    color: #fff !important;
-    font-weight: 700 !important;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+.contact-page label, .purchase-page label,
+.contact-page .label, .purchase-page .label,
+.contact-page p, .purchase-page p,
+.contact-page span, .purchase-page span {
+    color: #1d1d1f !important;
+    font-weight: 600;
+    text-shadow: none !important;
+}
+
+.contact-page input, .purchase-page input,
+.contact-page textarea, .purchase-page textarea {
+    background: rgba(0,0,0,0.03) !important;
+    border: 1px solid rgba(0,0,0,0.1) !important;
+    color: #000 !important;
+}
+
+.contact-page .navbar, .purchase-page .navbar {
+    background: rgba(255,255,255,0.8);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.contact-page .nav-links a, .purchase-page .nav-links a,
+.contact-page .logo, .purchase-page .logo {
+    color: #000 !important;
 }
 
 #video-bg-container {
