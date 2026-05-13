@@ -143,7 +143,11 @@
                                 <span>UPI / QR</span>
                             </div>
                             <div class="payment-card glass" data-method="apple">
-                                <span class="icon">🍎</span>
+                                <span class="icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: block; margin: 0 auto 8px;">
+                                        <path d="M17.057 12.781c.032 2.588 2.254 3.462 2.287 3.473-.021.068-.354 1.211-1.168 2.399-.703 1.028-1.433 2.051-2.58 2.072-1.127.022-1.491-.665-2.779-.665-1.288 0-1.69.644-2.759.687-1.108.043-1.954-1.114-2.662-2.141-1.447-2.099-2.553-5.912-1.066-8.49.738-1.28 2.056-2.09 3.481-2.112 1.085-.022 2.109.728 2.773.728.665 0 1.905-.901 3.203-.77 0.542.022 2.067.218 3.045 1.644-0.079.049-1.817 1.058-1.795 3.176zm-2.457-7.309c0.584-.71 0.977-1.696 0.869-2.678-.844.034-1.866.562-2.471 1.272-.542.631-.916 1.637-.791 2.599.941.073 1.879-.533 2.393-1.193z"/>
+                                    </svg>
+                                </span>
                                 <span>Apple Pay</span>
                             </div>
                             <div class="payment-card glass" data-method="paypal">
@@ -192,9 +196,11 @@
 
                             <div id="method-apple" class="payment-method-section" style="display: none;">
                                 <div style="text-align: center; padding: 20px;">
-                                    <button class="glass" style="width: 100%; padding: 15px; border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer;">
-                                        <span style="font-size: 1.5rem;">🍎</span>
-                                        <span style="font-weight: 600;">Pay with Apple Pay</span>
+                                    <button id="apple-pay-trigger" class="glass" style="width: 100%; padding: 18px; border-radius: 15px; display: flex; align-items: center; justify-content: center; gap: 12px; cursor: pointer; background: #000; color: #fff; border: 1px solid rgba(255,255,255,0.2); transition: 0.3s;">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M17.057 12.781c.032 2.588 2.254 3.462 2.287 3.473-.021.068-.354 1.211-1.168 2.399-.703 1.028-1.433 2.051-2.58 2.072-1.127.022-1.491-.665-2.779-.665-1.288 0-1.69.644-2.759.687-1.108.043-1.954-1.114-2.662-2.141-1.447-2.099-2.553-5.912-1.066-8.49.738-1.28 2.056-2.09 3.481-2.112 1.085-.022 2.109.728 2.773.728.665 0 1.905-.901 3.203-.77 0.542.022 2.067.218 3.045 1.644-0.079.049-1.817 1.058-1.795 3.176zm-2.457-7.309c0.584-.71 0.977-1.696 0.869-2.678-.844.034-1.866.562-2.471 1.272-.542.631-.916 1.637-.791 2.599.941.073 1.879-.533 2.393-1.193z"/>
+                                        </svg>
+                                        <span style="font-weight: 600; font-size: 1.1rem;">Pay with Apple Pay</span>
                                     </button>
                                 </div>
                             </div>
