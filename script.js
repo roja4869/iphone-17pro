@@ -51,15 +51,16 @@ const initHeroCanvas = () => {
   const loadImages = () => {
     for (let i = 1; i <= frameCount; i++) {
       const img = new Image();
-      img.src = `assets/iphone_frames/ezgif-frame-${i.toString().padStart(3, "0")}.jpg`;
+      const frameNum = i.toString().padStart(3, "0");
+      img.src = `assets/iphone_frames/ezgif-frame-${frameNum}.jpg`;
       img.onload = () => {
         loadedCount++;
-        if (loadedCount === 1) render(); // Show first frame immediately
+        if (i === 1) render(); // Always render first frame immediately on load
+        if (loadedCount === frameCount) render();
       };
-      // For cached images
+      // Fallback for cached images
       if (img.complete) {
-        loadedCount++;
-        if (loadedCount === 1) render();
+        if (i === 1) render();
       }
       images.push(img);
     }
