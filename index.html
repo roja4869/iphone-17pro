@@ -60,8 +60,10 @@
     </nav>
 
     <main>
-        <!-- Fixed Video Background Container -->
         <div id="video-bg-container">
+            <div class="cinematic-overlay"></div>
+            <div class="light-streaks"></div>
+            <div class="particles"></div>
             <canvas id="hero-canvas"></canvas>
             <div class="video-overlay-glow"></div>
         </div>
@@ -197,11 +199,49 @@
     width: 100%;
     height: 100vh;
     z-index: -1;
-    background-color: #000;
-    background-image: url('assets/iphone_frames/ezgif-frame-001.jpg');
-    background-size: contain;
+    background-color: #020202;
+    background-image: url('assets/cinematic_titanium_bg.png');
+    background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+}
+
+.cinematic-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(0,0,0,0.4) 100%);
+    z-index: 1;
+}
+
+.light-streaks {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.05) 50%, transparent 60%);
+    background-size: 200% 200%;
+    animation: streakMove 8s linear infinite;
+    z-index: 2;
+}
+
+@keyframes streakMove {
+    0% { background-position: -200% -200%; }
+    100% { background-position: 200% 200%; }
+}
+
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.1;
+    animation: floatParticles 20s linear infinite;
+    z-index: 2;
+}
+
+@keyframes floatParticles {
+    from { transform: translateY(0); }
+    to { transform: translateY(-1000px); }
 }
 
 #hero-canvas {
